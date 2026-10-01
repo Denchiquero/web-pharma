@@ -37,9 +37,39 @@ export const HERO_HTML = `
 >
 
   <a-entity
-    id="heroModel"
-    gltf-model="#hero-model"
-    scale="0.82 0.82 0.82">
+    id="heroMotion"
+    animation__sway="
+      property: rotation;
+      from: 0 -3 0;
+      to: 0 3 0;
+      dir: alternate;
+      dur: 1800;
+      loop: true;
+      easing: easeInOutSine
+    ">
+
+    <a-entity
+      id="heroTalk"
+      animation__talk="
+        property: scale;
+        from: 1 1 1;
+        to: 1.04 0.96 1.04;
+        dir: alternate;
+        dur: 120;
+        loop: true;
+        startEvents: talk;
+        pauseEvents: quiet;
+        easing: easeInOutSine
+      ">
+
+      <a-entity
+        id="heroModel"
+        gltf-model="#hero-model"
+        scale="0.82 0.82 0.82">
+      </a-entity>
+
+    </a-entity>
+
   </a-entity>
 
 </a-entity>

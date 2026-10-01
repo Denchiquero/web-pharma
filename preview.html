@@ -63,6 +63,7 @@
 <script type="module">
 
   import { HERO_HTML } from './hero.js';
+  import { createBearVoice } from './bear-speech.js';
 
   const stage = document.getElementById('stage');
 
@@ -72,6 +73,7 @@
   );
 
   const hero = document.getElementById('hero');
+  const voice = createBearVoice(document.getElementById('heroTalk'));
 
   hero.addEventListener('model-loaded', () => {
     console.log('✅ BEAR.GLB ЗАГРУЖЕН');
@@ -86,6 +88,7 @@
 
   document.getElementById('t').onclick = () => {
     hero.emit('happy');
+    voice.speak('Привет! Я мишка. Поможешь мне собрать три звёздочки?');
   };
 
 </script>
