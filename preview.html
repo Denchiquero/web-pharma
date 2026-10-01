@@ -1,19 +1,87 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Герой: предпросмотр</title>
-<script src="./vendor/aframe.min.js"></script></head>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+  >
+
+  <title>Герой: предпросмотр</title>
+
+  <script src="./vendor/aframe.min.js"></script>
+</head>
+
 <body>
-<a-scene embedded style="height:100vh" vr-mode-ui="enabled: false">
+
+<a-scene
+        embedded
+        style="height:100vh"
+        vr-mode-ui="enabled: false"
+>
+
   <a-sky color="#fff6e5"></a-sky>
-  <a-light type="ambient" intensity="0.9"></a-light>
-  <a-light type="directional" position="1 2 2" intensity="0.6"></a-light>
-  <a-entity id="stage" position="0 -0.3 -2.5"></a-entity>
+
+  <a-light
+          type="ambient"
+          intensity="1.5">
+  </a-light>
+
+  <a-light
+          type="directional"
+          position="1 2 2"
+          intensity="1">
+  </a-light>
+
+  <a-entity
+          id="stage"
+          position="0 0 -2.5">
+  </a-entity>
+
 </a-scene>
-<button id="t" style="position:fixed;bottom:16px;left:16px;padding:12px;z-index:9">Обрадовать героя</button>
+
+<button
+        id="t"
+        style="
+    position:fixed;
+    bottom:16px;
+    left:16px;
+    padding:12px;
+    z-index:9;
+  ">
+  Обрадовать героя
+</button>
+
 <script type="module">
+
   import { HERO_HTML } from './hero.js';
-  document.getElementById('stage').insertAdjacentHTML('beforeend', HERO_HTML);
-  document.getElementById('t').onclick = () => document.getElementById('hero').emit('happy');
+
+  const stage = document.getElementById('stage');
+
+  stage.insertAdjacentHTML(
+          'beforeend',
+          HERO_HTML
+  );
+
+  const hero = document.getElementById('hero');
+
+  hero.addEventListener('model-loaded', () => {
+    console.log('✅ ROBOT.GLb ЗАГРУЖЕН');
+  });
+
+  hero.addEventListener('model-error', (event) => {
+    console.error(
+            '❌ ОШИБКА ЗАГРУЗКИ GLB',
+            event
+    );
+  });
+
+  document.getElementById('t').onclick = () => {
+    hero.emit('happy');
+  };
+
 </script>
-</body></html>
+
+</body>
+</html>
