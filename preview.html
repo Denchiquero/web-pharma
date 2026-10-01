@@ -21,6 +21,13 @@
         vr-mode-ui="enabled: false"
 >
 
+  <a-assets>
+    <a-asset-item
+            id="hero-model"
+            src="./bear.glb">
+    </a-asset-item>
+  </a-assets>
+
   <a-sky color="#fff6e5"></a-sky>
 
   <a-light
@@ -67,7 +74,7 @@
   const hero = document.getElementById('hero');
 
   hero.addEventListener('model-loaded', () => {
-    console.log('✅ ROBOT.GLb ЗАГРУЖЕН');
+    console.log('✅ BEAR.GLB ЗАГРУЖЕН');
   });
 
   hero.addEventListener('model-error', (event) => {

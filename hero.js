@@ -38,7 +38,7 @@ export const HERO_HTML = `
 
   <a-entity
     id="heroModel"
-    gltf-model="url(./bear.glb)"
+    gltf-model="#hero-model"
     scale="0.82 0.82 0.82">
   </a-entity>
 
